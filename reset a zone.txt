@@ -1,0 +1,59 @@
+reset solaris zones:
+sdsl0038 
+sdsl0040 
+
+solaris 11 & solaris 11
+
+# uninstall the zone
+zoneadm -z sdsl0038 shutdown 
+zoneadm -z sdsl0038 uninstall
+zoneadm -z sdsl0038 list -v
+
+
+root@sparc4vm:~# zoneadm -z sdsl0038 shutdown
+root@sparc4vm:~#
+root@sparc4vm:~# zoneadm -z sdsl0038 list -v
+  ID NAME             STATUS     PATH                           BRAND    IP
+   - sdsl0038         installed  /zones/sdsl0038                solaris  excl
+root@sparc4vm:~# zoneadm -z sdsl0038 uninstall
+Are you sure you want to uninstall zone sdsl0038 (y/[n])? y
+Progress being logged to /var/log/zones/zoneadm.20151008T221025Z.sdsl0038.uninstall
+root@sparc4vm:~# zoneadm -z sdsl0038 list -v
+  ID NAME             STATUS     PATH                           BRAND    IP
+   - sdsl0038         configured /zones/sdsl0038                solaris  excl
+root@sparc4vm:~#
+root@sparc4vm:~# ls /zones/sdsl0038
+/zones/sdsl0038: No such file or directory
+
+
+
+root@sparc4vm:~# zoneadm -z sdsl0040 shutdown
+root@sparc4vm:~# zoneadm -z sdsl0040 uninstall
+Are you sure you want to uninstall zone sdsl0040 (y/[n])? y
+Progress being logged to /var/log/zones/zoneadm.20151008T222509Z.sdsl0040.uninstall
+root@sparc4vm:~# zoneadm -z sdsl0040 list -v
+  ID NAME             STATUS     PATH                           BRAND    IP
+   - sdsl0040         configured /zones/sdsl0040                solaris  excl
+root@sparc4vm:~# ls /zones/sdsl0040
+/zones/sdsl0040: No such file or directory
+root@sparc4vm:~#
+
+
+# now reset it with a new install:
+
+
+zonecfg -z sdsl0038 .. etc
+
+
+move zones:
+
+http://docs.oracle.com/cd/E19044-01/sol.containers/819-2450/gcgnc/index.html
+
+creating a new zfs pool and other monitoring:
+
+https://docs.oracle.com/cd/E23824_01/html/E24456/storage-4.html
+
+how to run explorer:
+
+https://docs.oracle.com/cd/E35557_01/doc.81/e35226/ch2_explorer.htm#IGSTB129
+
